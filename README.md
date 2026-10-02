@@ -24,26 +24,8 @@ The project uses a modular Terraform structure to separate networking and S3 res
 
 ## Architecture
 
-```text
-                         Terraform
-                             |
-             +---------------+---------------+
-             |                               |
-             v                               v
-       S3 Remote State                  AWS Infrastructure
-             |                               |
-     +-------+--------+              +-------+--------+
-     |                |              |                |
- Versioning       Encryption         VPC              S3
-     |                |              |                |
- Public Access    State Locking      Subnet       Application
- Protection                          |
-                                     +----------------+
-                                     |                |
-                              Internet Gateway   Security Group
-                                     |                |
-                              Route Table          EC2
-```
+
+![Terraform AWS architecture diagram](docs/terraform_aws_architecture.png)
 
 ---
 
