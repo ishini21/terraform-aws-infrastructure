@@ -1,3 +1,15 @@
+# terraform {
+#   required_providers {
+#     aws = {
+#       source  = "hashicorp/aws"
+#       version = "~> 5.0"
+#     }
+#   }
+# }
+
+# provider "aws" {
+#   region = var.aws_region
+# }
 terraform {
   required_providers {
     aws = {
@@ -5,10 +17,13 @@ terraform {
       version = "~> 5.0"
     }
   }
-}
 
-provider "aws" {
-  region = var.aws_region
+  backend "s3" {
+    bucket       = "terraform-project-2-state-ishini"
+    key          = "terraform.tfstate"
+    region       = "ap-southeast-1"
+    use_lockfile = true
+  }
 }
 
 module "networking" {
